@@ -1,0 +1,293 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > ReportController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.reportingservice.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: ReportController (com.example.reportingservice.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReportController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (12/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (72/72)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.reportingservice.controller;
+&nbsp;
+&nbsp;import com.example.reportingservice.dto.*;
+&nbsp;import com.example.reportingservice.model.Report;
+&nbsp;import com.example.reportingservice.service.ReportService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.http.HttpHeaders;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import jakarta.validation.Valid;
+&nbsp;import java.util.List;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@RequestMapping(&quot;/api/reports&quot;)
+<b class="fc">&nbsp;public class ReportController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private ReportService reportService;
+&nbsp;
+&nbsp;    @GetMapping
+&nbsp;    public ResponseEntity&lt;String&gt; sayHello(@RequestHeader HttpHeaders headers) {
+<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(&quot;Hello&quot;, HttpStatus.OK);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/project&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; generateProjectReport(@RequestHeader HttpHeaders headers, @RequestBody @Valid GenerateReportRequest reportRequest) {
+<b class="fc">&nbsp;        StringBuilder headersInfo = new StringBuilder();</b>
+<b class="fc">&nbsp;        String token = headers.get(&quot;authorization&quot;).get(0).substring(7);</b>
+&nbsp;
+&nbsp;        try {
+<b class="fc">&nbsp;            Report report = reportService.generateProjectsReport(</b>
+<b class="fc">&nbsp;                    reportRequest.getType(),</b>
+<b class="fc">&nbsp;                    reportRequest.getParameters(),</b>
+&nbsp;                    token
+&nbsp;            );
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(report, HttpStatus.CREATED);</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/project/{id}&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; generateProjectReport(@RequestHeader HttpHeaders headers,@PathVariable UUID id, @RequestBody @Valid GenerateReportRequest reportRequest) {
+<b class="fc">&nbsp;        StringBuilder headersInfo = new StringBuilder();</b>
+<b class="fc">&nbsp;        String token = headers.get(&quot;authorization&quot;).get(0).substring(7);</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Report report = reportService.generateProjectReportByProjectId(</b>
+<b class="fc">&nbsp;                    reportRequest.getType(),</b>
+<b class="fc">&nbsp;                    reportRequest.getParameters(),</b>
+&nbsp;                    id,
+&nbsp;                    token
+&nbsp;            );
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(report, HttpStatus.CREATED);</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/task&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; generateTasksReport(@RequestHeader HttpHeaders headers, @RequestBody @Valid GenerateReportRequest reportRequest) {
+<b class="fc">&nbsp;        StringBuilder headersInfo = new StringBuilder();</b>
+<b class="fc">&nbsp;        String token = headers.get(&quot;authorization&quot;).get(0).substring(7);</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Report report = reportService.generateTasksReport(</b>
+<b class="fc">&nbsp;                    reportRequest.getType(),</b>
+<b class="fc">&nbsp;                    reportRequest.getParameters(),</b>
+&nbsp;                    token
+&nbsp;            );
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(report, HttpStatus.CREATED);</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/task/{id}&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; generaTaskReport(@RequestHeader HttpHeaders headers, @PathVariable UUID id, @RequestBody @Valid GenerateReportRequest reportRequest) {
+<b class="fc">&nbsp;        StringBuilder headersInfo = new StringBuilder();</b>
+<b class="fc">&nbsp;        String token = headers.get(&quot;authorization&quot;).get(0).substring(7);</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Report report = reportService.generateTaskReportByTaskId(</b>
+<b class="fc">&nbsp;                    reportRequest.getType(),</b>
+<b class="fc">&nbsp;                    reportRequest.getParameters(),</b>
+&nbsp;                    id,
+&nbsp;                    token
+&nbsp;            );
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(report, HttpStatus.CREATED);</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/department&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; generateDepartmentsReport(@RequestHeader HttpHeaders headers,@RequestBody @Valid GenerateReportRequest reportRequest) {
+<b class="fc">&nbsp;        StringBuilder headersInfo = new StringBuilder();</b>
+<b class="fc">&nbsp;        String token = headers.get(&quot;authorization&quot;).get(0).substring(7);;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Report report = reportService.generateDepartmentsReport(</b>
+<b class="fc">&nbsp;                    reportRequest.getType(),</b>
+<b class="fc">&nbsp;                    reportRequest.getParameters(),</b>
+&nbsp;                    token
+&nbsp;            );
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(report, HttpStatus.CREATED);</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/department/{id}&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; generateDepartmentReport(@RequestHeader HttpHeaders headers,@PathVariable UUID id, @RequestBody @Valid GenerateReportRequest reportRequest) {
+<b class="fc">&nbsp;        StringBuilder headersInfo = new StringBuilder();</b>
+<b class="fc">&nbsp;        String token = headers.get(&quot;authorization&quot;).get(0).substring(7);;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Report report = reportService.generateDepartmentReportByDepartmentId(</b>
+<b class="fc">&nbsp;                    reportRequest.getType(),</b>
+<b class="fc">&nbsp;                    reportRequest.getParameters(),</b>
+&nbsp;                    id,
+&nbsp;                    token
+&nbsp;            );
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(report, HttpStatus.CREATED);</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/employee&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; generateEmployeesReport(@RequestHeader HttpHeaders headers,@RequestBody @Valid GenerateReportRequest reportRequest) {
+<b class="fc">&nbsp;        StringBuilder headersInfo = new StringBuilder();</b>
+<b class="fc">&nbsp;        String token = headers.get(&quot;authorization&quot;).get(0).substring(7);;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Report report = reportService.generateEmployeesReport(</b>
+<b class="fc">&nbsp;                    reportRequest.getType(),</b>
+<b class="fc">&nbsp;                    reportRequest.getParameters(),</b>
+&nbsp;                    token
+&nbsp;            );
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(report, HttpStatus.CREATED);</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/employee/{id}&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; generateEmployeeReportByEmployeeId(@RequestHeader HttpHeaders headers,@PathVariable UUID id, @RequestBody @Valid GenerateReportRequest reportRequest) {
+<b class="fc">&nbsp;        StringBuilder headersInfo = new StringBuilder();</b>
+<b class="fc">&nbsp;        String token = headers.get(&quot;authorization&quot;).get(0).substring(7);;</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            Report report = reportService.generateEmployeeReportByEmployeeId(</b>
+<b class="fc">&nbsp;                    reportRequest.getType(),</b>
+<b class="fc">&nbsp;                    reportRequest.getParameters(),</b>
+&nbsp;                    id,
+&nbsp;                    token
+&nbsp;            );
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(report, HttpStatus.CREATED);</b>
+<b class="fc">&nbsp;        } catch (Exception e) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    @GetMapping(&quot;/{id}&quot;)
+&nbsp;    public ResponseEntity&lt;Report&gt; getReportById(@PathVariable String id) {
+<b class="fc">&nbsp;        Report report = reportService.getReportById(id);</b>
+<b class="fc">&nbsp;        if (report == null) {</b>
+<b class="fc">&nbsp;            return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(report, HttpStatus.OK);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @DeleteMapping(&quot;/{id}&quot;)
+&nbsp;    public ResponseEntity&lt;Void&gt; deleteReport(@PathVariable String id) {
+<b class="fc">&nbsp;        reportService.deleteReport(id);</b>
+<b class="fc">&nbsp;        return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-07-18 17:16</div>
+</div>
+</body>
+</html>

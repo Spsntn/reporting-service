@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Department Service API
+  description: API for managing departments
+  version: 1.0.0
+paths:
+  /api/departments:
+    get:
+      summary: Get all departments
+      responses:
+        '200':
+          description: List of departments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+    post:
+      summary: Create a new department
+      requestBody:
+        description: Department creation request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDepartmentRequest'
+      responses:
+        '200':
+          description: Department created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+  /api/departments/{id}:
+    get:
+      summary: Get a department by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Department ID
+      responses:
+        '200':
+          description: Department retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '404':
+          description: Department not found
+    put:
+      summary: Update a department
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Department ID
+      requestBody:
+        description: Department update request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDepartmentRequest'
+      responses:
+        '200':
+          description: Department updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+    delete:
+      summary: Delete a department
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Department ID
+      responses:
+        '204':
+          description: Department deleted successfully
+  /api/departments/{id}/exists:
+    get:
+      summary: Check if department exists by ID
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Department ID
+      responses:
+        '200':
+          description: Existence of the department
+          content:
+            application/json:
+              schema:
+                type: boolean
+components:
+  schemas:
+    Department:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    CreateDepartmentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+    UpdateDepartmentRequest:
+      type: object
+      properties:
+        name:
+          type: string

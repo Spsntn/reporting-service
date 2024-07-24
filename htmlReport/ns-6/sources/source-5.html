@@ -1,0 +1,275 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Task</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.reportingservice.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Task (com.example.reportingservice.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Task</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    73,9%
+  </span>
+  <span class="absValue">
+    (17/23)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    55,6%
+  </span>
+  <span class="absValue">
+    (10/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    73,2%
+  </span>
+  <span class="absValue">
+    (41/56)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.reportingservice.model;
+&nbsp;
+&nbsp;import java.util.Objects;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;/**
+&nbsp; * Task
+&nbsp; */
+&nbsp;
+<b class="fc">&nbsp;public class Task   {</b>
+<b class="fc">&nbsp;  private UUID id = null;</b>
+&nbsp;
+<b class="fc">&nbsp;  private String name = null;</b>
+&nbsp;
+<b class="fc">&nbsp;  private String description = null;</b>
+&nbsp;
+<b class="fc">&nbsp;  private String status = null;</b>
+&nbsp;
+<b class="fc">&nbsp;  private UUID projectId = null;</b>
+&nbsp;
+<b class="fc">&nbsp;  private UUID employeeId = null;</b>
+&nbsp;
+&nbsp;  public Task id(UUID id) {
+<b class="nc">&nbsp;    this.id = id;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Get id
+&nbsp;   * @return id
+&nbsp;   **/
+&nbsp;
+&nbsp;    public UUID getId() {
+<b class="fc">&nbsp;    return id;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setId(UUID id) {
+<b class="fc">&nbsp;    this.id = id;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Task name(String name) {
+<b class="nc">&nbsp;    this.name = name;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public String getName() {
+<b class="fc">&nbsp;    return name;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setName(String name) {
+<b class="fc">&nbsp;    this.name = name;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Task description(String description) {
+<b class="nc">&nbsp;    this.description = description;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public String getDescription() {
+<b class="fc">&nbsp;    return description;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setDescription(String description) {
+<b class="fc">&nbsp;    this.description = description;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Task status(String status) {
+<b class="nc">&nbsp;    this.status = status;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public String getStatus() {
+<b class="fc">&nbsp;    return status;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setStatus(String status) {
+<b class="fc">&nbsp;    this.status = status;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Task projectId(UUID projectId) {
+<b class="nc">&nbsp;    this.projectId = projectId;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public UUID getProjectId() {
+<b class="fc">&nbsp;    return projectId;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setProjectId(UUID projectId) {
+<b class="fc">&nbsp;    this.projectId = projectId;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Task employeeId(UUID employeeId) {
+<b class="nc">&nbsp;    this.employeeId = employeeId;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public UUID getEmployeeId() {
+<b class="fc">&nbsp;    return employeeId;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setEmployeeId(UUID employeeId) {
+<b class="fc">&nbsp;    this.employeeId = employeeId;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public boolean equals(java.lang.Object o) {
+<b class="pc">&nbsp;    if (this == o) {</b>
+<b class="nc">&nbsp;      return true;</b>
+&nbsp;    }
+<b class="pc">&nbsp;    if (o == null || getClass() != o.getClass()) {</b>
+<b class="nc">&nbsp;      return false;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    Task task = (Task) o;</b>
+<b class="pc">&nbsp;    return Objects.equals(this.id, task.id) &amp;&amp;</b>
+<b class="pc">&nbsp;        Objects.equals(this.name, task.name) &amp;&amp;</b>
+<b class="pc">&nbsp;        Objects.equals(this.description, task.description) &amp;&amp;</b>
+<b class="fc">&nbsp;        Objects.equals(this.status, task.status) &amp;&amp;</b>
+<b class="pc">&nbsp;        Objects.equals(this.projectId, task.projectId) &amp;&amp;</b>
+<b class="fc">&nbsp;        Objects.equals(this.employeeId, task.employeeId);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public int hashCode() {
+<b class="fc">&nbsp;    return Objects.hash(id, name, description, status, projectId, employeeId);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public String toString() {
+<b class="fc">&nbsp;    StringBuilder sb = new StringBuilder();</b>
+<b class="fc">&nbsp;    sb.append(&quot;class Task {\n&quot;);</b>
+&nbsp;    
+<b class="fc">&nbsp;    sb.append(&quot;    id: &quot;).append(toIndentedString(id)).append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    sb.append(&quot;    name: &quot;).append(toIndentedString(name)).append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    sb.append(&quot;    description: &quot;).append(toIndentedString(description)).append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    sb.append(&quot;    status: &quot;).append(toIndentedString(status)).append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    sb.append(&quot;    projectId: &quot;).append(toIndentedString(projectId)).append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    sb.append(&quot;    employeeId: &quot;).append(toIndentedString(employeeId)).append(&quot;\n&quot;);</b>
+<b class="fc">&nbsp;    sb.append(&quot;}&quot;);</b>
+<b class="fc">&nbsp;    return sb.toString();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Convert the given object to string with each line indented by 4 spaces
+&nbsp;   * (except the first line).
+&nbsp;   */
+&nbsp;  private String toIndentedString(java.lang.Object o) {
+<b class="pc">&nbsp;    if (o == null) {</b>
+<b class="nc">&nbsp;      return &quot;null&quot;;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    return o.toString().replace(&quot;\n&quot;, &quot;\n    &quot;);</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-07-18 17:16</div>
+</div>
+</body>
+</html>

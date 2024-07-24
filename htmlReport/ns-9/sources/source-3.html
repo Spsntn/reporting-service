@@ -1,0 +1,217 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > ProjectService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.reportingservice.service</a>
+</div>
+
+<h1>Coverage Summary for Class: ProjectService (com.example.reportingservice.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProjectService</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4,5%
+  </span>
+  <span class="absValue">
+    (1/22)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ProjectService$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (1/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    4,3%
+  </span>
+  <span class="absValue">
+    (1/23)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.reportingservice.service;
+&nbsp;
+&nbsp;import com.example.reportingservice.model.Employee;
+&nbsp;import com.example.reportingservice.model.Project;
+&nbsp;import com.example.reportingservice.model.Task;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.core.ParameterizedTypeReference;
+&nbsp;import org.springframework.http.HttpEntity;
+&nbsp;import org.springframework.http.HttpHeaders;
+&nbsp;import org.springframework.http.HttpMethod;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.web.client.HttpClientErrorException;
+&nbsp;import org.springframework.web.client.RestTemplate;
+&nbsp;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class ProjectService {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private RestTemplate restTemplate;
+&nbsp;
+&nbsp;    private static final String PROJECT_SERVICE_URL = &quot;https://monarch-careful-marmoset.ngrok-free.app/api/projects&quot;;
+&nbsp;
+&nbsp;    public Project getProjectById(UUID id, String token) {
+<b class="nc">&nbsp;        HttpHeaders headers = new HttpHeaders();</b>
+<b class="nc">&nbsp;        headers.setBearerAuth(token); // Aggiungi il token alla richiesta</b>
+<b class="nc">&nbsp;        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</b>
+<b class="nc">&nbsp;        ResponseEntity&lt;Project&gt; response = restTemplate.exchange(</b>
+&nbsp;                PROJECT_SERVICE_URL + &quot;/&quot; + id,
+&nbsp;                HttpMethod.GET,
+&nbsp;                entity,
+&nbsp;                Project.class
+&nbsp;        );
+&nbsp;
+<b class="nc">&nbsp;        return response.getBody();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Project&gt; getProjectByDepartmentId(UUID id, String token) {
+<b class="nc">&nbsp;        HttpHeaders headers = new HttpHeaders();</b>
+<b class="nc">&nbsp;        headers.setBearerAuth(token); // Aggiungi il token alla richiesta</b>
+<b class="nc">&nbsp;        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</b>
+&nbsp;
+<b class="nc">&nbsp;        ResponseEntity&lt;List&lt;Project&gt;&gt; response = restTemplate.exchange(</b>
+&nbsp;                PROJECT_SERVICE_URL + &quot;/by-department/&quot; + id,
+&nbsp;                HttpMethod.GET,
+&nbsp;                entity,
+<b class="nc">&nbsp;                new ParameterizedTypeReference&lt;List&lt;Project&gt;&gt;() {}</b>
+&nbsp;        );
+<b class="nc">&nbsp;        return response.getBody();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Project&gt; getAllProjects(String token) {
+<b class="nc">&nbsp;            HttpHeaders headers = new HttpHeaders();</b>
+<b class="nc">&nbsp;            headers.setBearerAuth(token); // Aggiungi il token alla richiesta</b>
+<b class="nc">&nbsp;            HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</b>
+&nbsp;
+&nbsp;            // Log della richiesta
+<b class="nc">&nbsp;            System.out.println(&quot;Sending request to: &quot; + PROJECT_SERVICE_URL);</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Token: &quot; + token);</b>
+&nbsp;
+&nbsp;            ResponseEntity&lt;Project[]&gt; response;
+&nbsp;            try {
+<b class="nc">&nbsp;                response = restTemplate.exchange(</b>
+&nbsp;                        PROJECT_SERVICE_URL,
+&nbsp;                        HttpMethod.GET,
+&nbsp;                        entity,
+&nbsp;                        Project[].class
+&nbsp;                );
+<b class="nc">&nbsp;            } catch (HttpClientErrorException e) {</b>
+&nbsp;                // Log dell&#39;errore
+<b class="nc">&nbsp;                System.err.println(&quot;Error: &quot; + e.getStatusCode() + &quot; - &quot; + e.getStatusText());</b>
+<b class="nc">&nbsp;                throw e;</b>
+&nbsp;            }
+&nbsp;
+&nbsp;            // Estrai la lista di Task dall&#39;entità di risposta
+<b class="nc">&nbsp;            Project[] tasksArray = response.getBody();</b>
+<b class="nc">&nbsp;            return Arrays.asList(tasksArray);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-07-17 17:06</div>
+</div>
+</body>
+</html>

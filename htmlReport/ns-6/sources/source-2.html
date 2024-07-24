@@ -1,0 +1,262 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Employee</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.reportingservice.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Employee (com.example.reportingservice.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Employee</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (18/24)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (10/20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (26/39)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.reportingservice.model;
+&nbsp;
+&nbsp;import java.util.Objects;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;public class Employee   {</b>
+&nbsp;
+<b class="fc">&nbsp;  private UUID id = null;</b>
+&nbsp;
+<b class="fc">&nbsp;  private String firstName = null;</b>
+&nbsp;
+<b class="fc">&nbsp;  private String lastName = null;</b>
+&nbsp;
+<b class="fc">&nbsp;  private String email = null;</b>
+&nbsp;  private String password;
+&nbsp;  private String username;
+&nbsp;
+<b class="fc">&nbsp;  private UUID idDepartment = null;</b>
+&nbsp;
+&nbsp;  public Employee id(UUID id) {
+<b class="nc">&nbsp;    this.id = id;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public UUID getId() {
+<b class="fc">&nbsp;    return id;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setId(UUID id) {
+<b class="fc">&nbsp;    this.id = id;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Employee firstName(String firstName) {
+<b class="nc">&nbsp;    this.firstName = firstName;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public String getFirstName() {
+<b class="fc">&nbsp;    return firstName;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public String getPassword() {
+<b class="fc">&nbsp;    return password;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setPassword(String password) {
+<b class="fc">&nbsp;    this.password = password;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public String getUsername() {
+<b class="fc">&nbsp;    return username;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setUsername(String username) {
+<b class="fc">&nbsp;    this.username = username;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setFirstName(String firstName) {
+<b class="fc">&nbsp;    this.firstName = firstName;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Employee lastName(String lastName) {
+<b class="nc">&nbsp;    this.lastName = lastName;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public String getLastName() {
+<b class="fc">&nbsp;    return lastName;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setLastName(String lastName) {
+<b class="fc">&nbsp;    this.lastName = lastName;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Employee email(String email) {
+<b class="nc">&nbsp;    this.email = email;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public String getEmail() {
+<b class="fc">&nbsp;    return email;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setEmail(String email) {
+<b class="fc">&nbsp;    this.email = email;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public Employee idDepartment(UUID idDepartment) {
+<b class="nc">&nbsp;    this.idDepartment = idDepartment;</b>
+<b class="nc">&nbsp;    return this;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;    public UUID getIdDepartment() {
+<b class="fc">&nbsp;    return idDepartment;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void setIdDepartment(UUID idDepartment) {
+<b class="fc">&nbsp;    this.idDepartment = idDepartment;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public boolean equals(Object o) {
+<b class="pc">&nbsp;    if (this == o) return true;</b>
+<b class="pc">&nbsp;    if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc">&nbsp;    Employee employee = (Employee) o;</b>
+<b class="pc">&nbsp;    return Objects.equals(id, employee.id) &amp;&amp; Objects.equals(firstName, employee.firstName) &amp;&amp; Objects.equals(lastName, employee.lastName) &amp;&amp; Objects.equals(email, employee.email) &amp;&amp; Objects.equals(password, employee.password) &amp;&amp; Objects.equals(username, employee.username) &amp;&amp; Objects.equals(idDepartment, employee.idDepartment);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public int hashCode() {
+<b class="fc">&nbsp;    return Objects.hash(id, firstName, lastName, email, password, username, idDepartment);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public String toString() {
+<b class="fc">&nbsp;    return &quot;Employee{&quot; +</b>
+&nbsp;            &quot;id=&quot; + id +
+&nbsp;            &quot;, firstName=&#39;&quot; + firstName + &#39;\&#39;&#39; +
+&nbsp;            &quot;, lastName=&#39;&quot; + lastName + &#39;\&#39;&#39; +
+&nbsp;            &quot;, email=&#39;&quot; + email + &#39;\&#39;&#39; +
+&nbsp;            &quot;, password=&#39;&quot; + password + &#39;\&#39;&#39; +
+&nbsp;            &quot;, username=&#39;&quot; + username + &#39;\&#39;&#39; +
+&nbsp;            &quot;, idDepartment=&quot; + idDepartment +
+&nbsp;            &#39;}&#39;;
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Convert the given object to string with each line indented by 4 spaces
+&nbsp;   * (except the first line).
+&nbsp;   */
+&nbsp;  private String toIndentedString(java.lang.Object o) {
+<b class="nc">&nbsp;    if (o == null) {</b>
+<b class="nc">&nbsp;      return &quot;null&quot;;</b>
+&nbsp;    }
+<b class="nc">&nbsp;    return o.toString().replace(&quot;\n&quot;, &quot;\n    &quot;);</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-07-18 17:16</div>
+</div>
+</body>
+</html>

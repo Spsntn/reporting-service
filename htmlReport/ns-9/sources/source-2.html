@@ -1,0 +1,176 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > EmployeeService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.reportingservice.service</a>
+</div>
+
+<h1>Coverage Summary for Class: EmployeeService (com.example.reportingservice.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmployeeService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5,3%
+  </span>
+  <span class="absValue">
+    (1/19)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.reportingservice.service;
+&nbsp;
+&nbsp;import com.example.reportingservice.model.Department;
+&nbsp;import com.example.reportingservice.model.Employee;
+&nbsp;import com.example.reportingservice.model.Task;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.http.HttpEntity;
+&nbsp;import org.springframework.http.HttpHeaders;
+&nbsp;import org.springframework.http.HttpMethod;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.web.client.RestTemplate;
+&nbsp;
+&nbsp;import java.util.Arrays;
+&nbsp;import java.util.List;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class EmployeeService {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private RestTemplate restTemplate;
+&nbsp;
+&nbsp;    private static final String EMPLOYEE_SERVICE_URL = &quot;https://chow-choice-cicada.ngrok-free.app/api/employees&quot;;
+&nbsp;
+&nbsp;    public List&lt;Employee&gt; getAllEmployees(String token) {
+<b class="nc">&nbsp;        HttpHeaders headers = new HttpHeaders();</b>
+<b class="nc">&nbsp;        headers.setBearerAuth(token); // Aggiungi il token alla richiesta</b>
+<b class="nc">&nbsp;        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</b>
+<b class="nc">&nbsp;        ResponseEntity&lt;Employee[]&gt; response = restTemplate.exchange(</b>
+&nbsp;                EMPLOYEE_SERVICE_URL,
+&nbsp;                HttpMethod.GET,
+&nbsp;                entity,
+&nbsp;                Employee[].class
+&nbsp;        );
+&nbsp;        // Estrai la lista di Task dall&#39;entità di risposta
+<b class="nc">&nbsp;        Employee[] employeeArray = response.getBody();</b>
+<b class="nc">&nbsp;        List&lt;Employee&gt; employees = Arrays.asList(employeeArray);</b>
+<b class="nc">&nbsp;        return employees;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Employee&gt; getEmployeesByDepartmentId(UUID id, String token) {
+<b class="nc">&nbsp;        HttpHeaders headers = new HttpHeaders();</b>
+<b class="nc">&nbsp;        headers.setBearerAuth(token); // Aggiungi il token alla richiesta</b>
+<b class="nc">&nbsp;        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</b>
+<b class="nc">&nbsp;        ResponseEntity&lt;Employee[]&gt; response = restTemplate.exchange(</b>
+&nbsp;                EMPLOYEE_SERVICE_URL + &quot;/by-department/&quot; + id,
+&nbsp;                HttpMethod.GET,
+&nbsp;                entity,
+&nbsp;                Employee[].class
+&nbsp;        );
+&nbsp;
+&nbsp;
+&nbsp;        // Estrai la lista di Task dall&#39;entità di risposta
+<b class="nc">&nbsp;        Employee[] employeeArray = response.getBody();</b>
+<b class="nc">&nbsp;        return Arrays.asList(employeeArray);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Employee findEmployeeById(UUID id, String token){
+<b class="nc">&nbsp;        HttpHeaders headers = new HttpHeaders();</b>
+<b class="nc">&nbsp;        headers.setBearerAuth(token); // Aggiungi il token alla richiesta</b>
+<b class="nc">&nbsp;        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</b>
+<b class="nc">&nbsp;        ResponseEntity&lt;Employee&gt; response = restTemplate.exchange(</b>
+&nbsp;                EMPLOYEE_SERVICE_URL + &quot;/&quot; + id,
+&nbsp;                HttpMethod.GET,
+&nbsp;                entity,
+&nbsp;                Employee.class
+&nbsp;        );
+&nbsp;
+<b class="nc">&nbsp;        return response.getBody();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-07-17 17:06</div>
+</div>
+</body>
+</html>

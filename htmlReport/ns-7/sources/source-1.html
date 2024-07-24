@@ -1,0 +1,194 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > DepartmentReportContent</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.reportingservice.reportModel</a>
+</div>
+
+<h1>Coverage Summary for Class: DepartmentReportContent (com.example.reportingservice.reportModel)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DepartmentReportContent</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    58,3%
+  </span>
+  <span class="absValue">
+    (7/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (20/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.reportingservice.reportModel;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class DepartmentReportContent {
+&nbsp;
+&nbsp;    private String departmentId;
+&nbsp;    private String departmentName;
+&nbsp;    private List&lt;Map&lt;String, String&gt;&gt; projects;
+&nbsp;    private List&lt;Map&lt;String, String&gt;&gt; employees;
+&nbsp;
+<b class="fc">&nbsp;    public DepartmentReportContent(String departmentId, String departmentName, List&lt;Map&lt;String, String&gt;&gt; projects, List&lt;Map&lt;String, String&gt;&gt; employees) {</b>
+<b class="fc">&nbsp;        this.departmentId = departmentId;</b>
+<b class="fc">&nbsp;        this.departmentName = departmentName;</b>
+<b class="fc">&nbsp;        this.projects = projects;</b>
+<b class="fc">&nbsp;        this.employees = employees;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public DepartmentReportContent() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDepartmentId() {
+<b class="fc">&nbsp;        return departmentId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDepartmentId(String departmentId) {
+<b class="fc">&nbsp;        this.departmentId = departmentId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDepartmentName() {
+<b class="fc">&nbsp;        return departmentName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDepartmentName(String departmentName) {
+<b class="fc">&nbsp;        this.departmentName = departmentName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Map&lt;String, String&gt;&gt; getProjects() {
+<b class="fc">&nbsp;        return projects;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setProjects(List&lt;Map&lt;String, String&gt;&gt; projectName) {
+<b class="fc">&nbsp;        this.projects = projectName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public List&lt;Map&lt;String, String&gt;&gt; getEmployees() {
+<b class="fc">&nbsp;        return employees;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEmployees(List&lt;Map&lt;String, String&gt;&gt; employees) {
+<b class="fc">&nbsp;        this.employees = employees;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="pc">&nbsp;        if (this == o) return true;</b>
+<b class="pc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc">&nbsp;        DepartmentReportContent that = (DepartmentReportContent) o;</b>
+<b class="pc">&nbsp;        return Objects.equals(departmentId, that.departmentId) &amp;&amp; Objects.equals(departmentName, that.departmentName) &amp;&amp; Objects.equals(projects, that.projects) &amp;&amp; Objects.equals(employees, that.employees);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="fc">&nbsp;        return Objects.hash(departmentId, departmentName, projects, employees);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;DepartmentReportContent{&quot; +</b>
+&nbsp;                &quot;departmentId=&#39;&quot; + departmentId + &#39;\&#39;&#39; +
+&nbsp;                &quot;, departmentName=&#39;&quot; + departmentName + &#39;\&#39;&#39; +
+&nbsp;                &quot;, projects=&quot; + projects +
+&nbsp;                &quot;, employees=&quot; + employees +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-07-18 17:16</div>
+</div>
+</body>
+</html>

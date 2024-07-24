@@ -1,0 +1,289 @@
+openapi: 3.0.0
+info:
+  title: Reporting Service API
+  description: API per la generazione e gestione dei report.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/api
+
+paths:
+  /reports/project:
+    post:
+      summary: Genera un report di progetto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReportRequest'
+      responses:
+        '201':
+          description: Report generato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '500':
+          description: Errore interno del server
+
+  /reports/project/{id}:
+    post:
+      summary: Genera un report di progetto per ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReportRequest'
+      responses:
+        '201':
+          description: Report generato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '500':
+          description: Errore interno del server
+
+  /reports/task:
+    post:
+      summary: Genera un report di attività
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReportRequest'
+      responses:
+        '201':
+          description: Report generato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '500':
+          description: Errore interno del server
+
+  /reports/task/{id}:
+    post:
+      summary: Genera un report di attività per ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReportRequest'
+      responses:
+        '201':
+          description: Report generato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '500':
+          description: Errore interno del server
+
+  /reports/department:
+    post:
+      summary: Genera un report di dipartimenti
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReportRequest'
+      responses:
+        '201':
+          description: Report generato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '500':
+          description: Errore interno del server
+
+  /reports/department/{id}:
+    post:
+      summary: Genera un report di dipartimento per ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReportRequest'
+      responses:
+        '201':
+          description: Report generato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '500':
+          description: Errore interno del server
+
+  /reports/employee:
+    post:
+      summary: Genera un report di dipendenti
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReportRequest'
+      responses:
+        '201':
+          description: Report generato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '500':
+          description: Errore interno del server
+
+  /reports/employee/{id}:
+    post:
+      summary: Genera un report di dipendente per ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateReportRequest'
+      responses:
+        '201':
+          description: Report generato con successo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '500':
+          description: Errore interno del server
+
+  /reports/{id}:
+    get:
+      summary: Ottieni un report per ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Report trovato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '404':
+          description: Report non trovato
+
+    delete:
+      summary: Elimina un report per ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Report eliminato
+        '404':
+          description: Report non trovato
+
+components:
+  schemas:
+    Report:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        parameters:
+          type: string
+        content:
+          type: string
+        generatedAt:
+          type: string
+          format: date-time
+      required:
+        - type
+        - content
+        - generatedAt
+
+    GenerateReportRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        parameters:
+          type: string
+      required:
+        - type
+        - parameters
+
+
+    GenerateReportResponse:
+      type: object
+      properties:
+        report:
+          $ref: '#/components/schemas/Report'
+
+    GetReportRequest:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+
+    GetReportResponse:
+      type: object
+      properties:
+        report:
+          $ref: '#/components/schemas/Report'
+
+    DeleteReportRequest:
+      type: object
+      properties:
+        id:
+          type: string
+      required:
+        - id
+
+    DeleteReportResponse:
+      type: object
+      properties:
+        success:
+          type: boolean

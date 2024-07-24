@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > EmployeeReportContent</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.reportingservice.reportModel</a>
+</div>
+
+<h1>Coverage Summary for Class: EmployeeReportContent (com.example.reportingservice.reportModel)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmployeeReportContent</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    58,3%
+  </span>
+  <span class="absValue">
+    (7/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (20/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.reportingservice.reportModel;
+&nbsp;
+&nbsp;import java.util.Map;
+&nbsp;import java.util.Objects;
+&nbsp;
+&nbsp;public class EmployeeReportContent {
+&nbsp;
+&nbsp;    private String employeeId;
+&nbsp;    private String employeeName;
+&nbsp;    private String departmentName;
+&nbsp;    private Map&lt;String, String&gt; task;
+&nbsp;
+<b class="fc">&nbsp;    public EmployeeReportContent(String employeeId, String employeeName, String departmentName, Map&lt;String, String&gt; task) {</b>
+<b class="fc">&nbsp;        this.employeeId = employeeId;</b>
+<b class="fc">&nbsp;        this.employeeName = employeeName;</b>
+<b class="fc">&nbsp;        this.departmentName = departmentName;</b>
+<b class="fc">&nbsp;        this.task = task;</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public EmployeeReportContent() {</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getEmployeeId() {
+<b class="fc">&nbsp;        return employeeId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEmployeeId(String employeeId) {
+<b class="fc">&nbsp;        this.employeeId = employeeId;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getEmployeeName() {
+<b class="fc">&nbsp;        return employeeName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setEmployeeName(String employeeName) {
+<b class="fc">&nbsp;        this.employeeName = employeeName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDepartmentName() {
+<b class="fc">&nbsp;        return departmentName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDepartmentName(String departmentName) {
+<b class="fc">&nbsp;        this.departmentName = departmentName;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Map&lt;String, String&gt; getTask() {
+<b class="fc">&nbsp;        return task;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTask(Map&lt;String, String&gt; task) {
+<b class="fc">&nbsp;        this.task = task;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="pc">&nbsp;        if (this == o) return true;</b>
+<b class="pc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+<b class="fc">&nbsp;        EmployeeReportContent that = (EmployeeReportContent) o;</b>
+<b class="pc">&nbsp;        return Objects.equals(employeeId, that.employeeId) &amp;&amp; Objects.equals(employeeName, that.employeeName) &amp;&amp; Objects.equals(departmentName, that.departmentName) &amp;&amp; Objects.equals(task, that.task);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="fc">&nbsp;        return Objects.hash(employeeId, employeeName, departmentName, task);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        return &quot;EmployeeReportContent{&quot; +</b>
+&nbsp;                &quot;employeeId=&#39;&quot; + employeeId + &#39;\&#39;&#39; +
+&nbsp;                &quot;, employeeName=&#39;&quot; + employeeName + &#39;\&#39;&#39; +
+&nbsp;                &quot;, departmentName=&#39;&quot; + departmentName + &#39;\&#39;&#39; +
+&nbsp;                &quot;, task=&quot; + task +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-07-18 17:16</div>
+</div>
+</body>
+</html>
