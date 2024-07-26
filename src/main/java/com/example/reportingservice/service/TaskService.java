@@ -3,6 +3,7 @@ package com.example.reportingservice.service;
 import com.example.reportingservice.model.Project;
 import com.example.reportingservice.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,7 +23,8 @@ public class TaskService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String TASK_SERVICE_URL = "https://hedgehog-open-dolphin.ngrok-free.app/api/tasks";
+    @Value("${task.service.url}")
+    public String taskServiceUrl;
 
     public List<Task> getAlltasks(String token) {
         HttpHeaders headers = new HttpHeaders();
@@ -30,13 +32,13 @@ public class TaskService {
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         // Log della richiesta
-        System.out.println("Sending request to: " + TASK_SERVICE_URL);
+        System.out.println("Sending request to: " + taskServiceUrl);
         System.out.println("Token: " + token);
 
         ResponseEntity<Task[]> response;
         try {
             response = restTemplate.exchange(
-                    TASK_SERVICE_URL,
+                    taskServiceUrl,
                     HttpMethod.GET,
                     entity,
                     Task[].class
@@ -57,7 +59,7 @@ public class TaskService {
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Task> response = restTemplate.exchange(
-                TASK_SERVICE_URL + "/" + taskId,
+                taskServiceUrl + "/" + taskId,
                 HttpMethod.GET,
                 entity,
                 Task.class
@@ -70,7 +72,7 @@ public class TaskService {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        String url = TASK_SERVICE_URL + "/by-project/" + projectId;
+        String url = taskServiceUrl + "/by-project/" + projectId;
         ResponseEntity<List<Task>> response = restTemplate.exchange(
                 url,
                 HttpMethod.GET,
@@ -85,7 +87,7 @@ public class TaskService {
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Task> response = restTemplate.exchange(
-                TASK_SERVICE_URL + "/by-employee/" + employeeId,
+                taskServiceUrl + "/by-employee/" + employeeId,
                 HttpMethod.GET,
                 entity,
                 Task.class

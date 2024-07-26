@@ -4,6 +4,7 @@ import com.example.reportingservice.model.Employee;
 import com.example.reportingservice.model.Project;
 import com.example.reportingservice.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,14 +24,15 @@ public class ProjectService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String PROJECT_SERVICE_URL = "https://monarch-careful-marmoset.ngrok-free.app/api/projects";
+    @Value("${project.service.url}")
+    public String projectServiceUrl;
 
     public Project getProjectById(UUID id, String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Project> response = restTemplate.exchange(
-                PROJECT_SERVICE_URL + "/" + id,
+                projectServiceUrl + "/" + id,
                 HttpMethod.GET,
                 entity,
                 Project.class
@@ -45,7 +47,7 @@ public class ProjectService {
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         ResponseEntity<List<Project>> response = restTemplate.exchange(
-                PROJECT_SERVICE_URL + "/by-department/" + id,
+                projectServiceUrl + "/by-department/" + id,
                 HttpMethod.GET,
                 entity,
                 new ParameterizedTypeReference<List<Project>>() {}
@@ -59,13 +61,13 @@ public class ProjectService {
             HttpEntity<String> entity = new HttpEntity<>(headers);
 
             // Log della richiesta
-            System.out.println("Sending request to: " + PROJECT_SERVICE_URL);
+            System.out.println("Sending request to: " + projectServiceUrl);
             System.out.println("Token: " + token);
 
             ResponseEntity<Project[]> response;
             try {
                 response = restTemplate.exchange(
-                        PROJECT_SERVICE_URL,
+                        projectServiceUrl,
                         HttpMethod.GET,
                         entity,
                         Project[].class

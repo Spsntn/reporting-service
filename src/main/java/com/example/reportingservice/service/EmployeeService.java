@@ -4,6 +4,7 @@ import com.example.reportingservice.model.Department;
 import com.example.reportingservice.model.Employee;
 import com.example.reportingservice.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -21,14 +22,16 @@ public class EmployeeService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String EMPLOYEE_SERVICE_URL = "https://chow-choice-cicada.ngrok-free.app/api/employees";
+
+    @Value("${employee.service.url}")
+    public String employeeServiceUrl;
 
     public List<Employee> getAllEmployees(String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Employee[]> response = restTemplate.exchange(
-                EMPLOYEE_SERVICE_URL,
+                employeeServiceUrl,
                 HttpMethod.GET,
                 entity,
                 Employee[].class
@@ -44,7 +47,7 @@ public class EmployeeService {
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Employee[]> response = restTemplate.exchange(
-                EMPLOYEE_SERVICE_URL + "/by-department/" + id,
+                employeeServiceUrl + "/by-department/" + id,
                 HttpMethod.GET,
                 entity,
                 Employee[].class
@@ -61,7 +64,7 @@ public class EmployeeService {
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Employee> response = restTemplate.exchange(
-                EMPLOYEE_SERVICE_URL + "/" + id,
+                employeeServiceUrl + "/" + id,
                 HttpMethod.GET,
                 entity,
                 Employee.class

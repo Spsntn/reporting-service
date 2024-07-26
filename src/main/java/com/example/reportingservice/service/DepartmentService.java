@@ -4,6 +4,7 @@ import com.example.reportingservice.filter.JwtRequestFilter;
 import com.example.reportingservice.model.Department;
 import com.example.reportingservice.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -21,14 +22,16 @@ public class DepartmentService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String DEPARTMENT_SERVICE_URL = "https://verified-rich-maggot.ngrok-free.app/api/departments";
+    @Value("${department.service.url}")
+    public String departmentServiceUrl;
+
 
     public Department getDepartmentById(UUID id, String token) {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Department> response = restTemplate.exchange(
-                DEPARTMENT_SERVICE_URL + "/" + id,
+                departmentServiceUrl + "/" + id,
                 HttpMethod.GET,
                 entity,
                 Department.class
@@ -41,7 +44,7 @@ public class DepartmentService {
         headers.setBearerAuth(token); // Aggiungi il token alla richiesta
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<Department[]> response = restTemplate.exchange(
-                DEPARTMENT_SERVICE_URL,
+                departmentServiceUrl,
                 HttpMethod.GET,
                 entity,
                 Department[].class
